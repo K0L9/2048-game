@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "L9sjAagZUkZIQ6Sl0Y3Nz5xYatkc8TbLNkC86NJDBD2RU2WEtXaWepXD5GEsS88cJ5XfGozMPjOqa5up8aXs/g==",
+  "dgSpecHash": "HWGCyUvw0zs+shVtFLuO/CwllqiKjH+2rEpPe50lOvZ1Hxs+bRIyXH8R6Cl2jG+uavIJIIo0vKEBUolyra+1Ag==",
   "success": true,
-  "projectFilePath": "E:\\Codes\\WPF(C#)\\Test2048(1)\\Task01\\Task01.csproj",
+  "projectFilePath": "C:\\Users\\Kolya\\myGit\\WPF_2048\\Test2048(1)\\Task01\\Task01.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

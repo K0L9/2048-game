@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Task01"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" KeyUp="Window_KeyUp">
 
     <DockPanel>
-        <ListView x:Name="field" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" DockPanel.Dock="Left" Width="500" SelectionChanged="field_SelectionChanged">
+        <ListView IsEnabled="False" x:Name="field" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" DockPanel.Dock="Left" Width="500" SelectionChanged="field_SelectionChanged">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="4" Rows="4"/>
@@ -16,10 +16,6 @@
             </ListView.ItemsPanel>
         </ListView>
         <Button DockPanel.Dock="Right" x:Name="addOneBrick" Content="Add brick" Click="addOneBrick_Click"/>
-        <Button DockPanel.Dock="Right" x:Name="moveDown" Content="Move down" Click="moveDown_Click"/>
-        <Button DockPanel.Dock="Right" x:Name="moveUp" Content="Move Up" Click="moveUp_Click"/>
-        <Button DockPanel.Dock="Right" x:Name="MoveLeft" Content="Move Left" Click="MoveLeft_Click"/>
-        <Button DockPanel.Dock="Right" x:Name="MoveRight" Content="Move Right" Click="MoveRight_Click"/>
     </DockPanel>
 
 

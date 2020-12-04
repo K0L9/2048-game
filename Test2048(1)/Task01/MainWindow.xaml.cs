@@ -64,191 +64,125 @@ namespace Task01
             return true;
         }
 
-        private void moveDown_Click(object sender, RoutedEventArgs e)
+        private void MoveDownAndRight(ObservableCollection<Brick> bricksLine)
         {
-            int currIndex = 0;
-            for (int col = 0; col < 4; col++, currIndex = col)
+            int clearIndex = -1;
+            int currNumberInDown = -1, currIndInDown = -1;
+            bool isShouldToWriteNewDownNumber = false;
+
+            for (int i = bricksLine.Count - 1; i >= 0; i--)
             {
-                ObservableCollection<Brick> bricksLine = new ObservableCollection<Brick>();
-
-                for (int i = 0; i < 4; i++, currIndex += 4)
-                    bricksLine.Add(viewModel.bricks[currIndex]);
-
-                if (bricksLine.Count(x => x.Number == 0) == 4)
-                    continue;
-
-                int clearIndex = -1;
-                int currNumberInDown = -1, currIndInDown = -1;
-                bool isShouldToWriteNewDownNumber = false;
-
-                for (int i = bricksLine.Count - 1; i >= 0; i--)
+                if (bricksLine[i].Number == 0)
                 {
-                    if (bricksLine[i].Number == 0)
+                    if (clearIndex == -1)
+                        clearIndex = i;
+                    continue;
+                }
+                else
+                {
+                    if (currNumberInDown == bricksLine[i].Number)
                     {
-                        if (clearIndex == -1)
-                            clearIndex = i;
+                        bricksLine[currIndInDown].Number *= 2;
+                        bricksLine[i].Number = 0;
+                        clearIndex = currIndInDown - 1;
+                        currNumberInDown = -1;
+                        currIndInDown = -1;
                         continue;
                     }
                     else
+                        isShouldToWriteNewDownNumber = true;
+
+                    if (clearIndex != -1)
                     {
-                        if (currNumberInDown == bricksLine[i].Number)
-                        {
-                            bricksLine[currIndInDown].Number *= 2;
-                            bricksLine[i].Number = 0;
-                            clearIndex = currIndInDown - 1;
-                            currNumberInDown = -1;
-                            currIndInDown = -1;
-                            continue;
-                        }
-                        else
-                            isShouldToWriteNewDownNumber = true;
-
-                        if (clearIndex != -1)
-                        {
-                            if (isShouldToWriteNewDownNumber)
-                            {
-                                currNumberInDown = bricksLine[i].Number;
-                                currIndInDown = clearIndex;
-                                isShouldToWriteNewDownNumber = false;
-                            }
-                            bricksLine[clearIndex].Number = bricksLine[i].Number;
-                            bricksLine[i].Number = 0;
-                            clearIndex--;
-                            // Баг пов'язаний з тим, що при опусканні елементів які стоять разом, вони не додаються, якщо ставити clearIndex = i, то вони не опускаються разом
-                        }
-
-                        else
+                        if (isShouldToWriteNewDownNumber)
                         {
                             currNumberInDown = bricksLine[i].Number;
-                            currIndInDown = i;
+                            currIndInDown = clearIndex;
                             isShouldToWriteNewDownNumber = false;
                         }
+                        bricksLine[clearIndex].Number = bricksLine[i].Number;
+                        bricksLine[i].Number = 0;
+                        clearIndex--;
+                    }
+
+                    else
+                    {
+                        currNumberInDown = bricksLine[i].Number;
+                        currIndInDown = i;
+                        isShouldToWriteNewDownNumber = false;
                     }
                 }
             }
         }
-
-        private void moveUp_Click(object sender, RoutedEventArgs e)
+        private void MoveLeftAndUp(ObservableCollection<Brick> bricksLine)
         {
-            int currIndex = 0;
-            for (int col = 0; col < 4; col++, currIndex = col)
+            int clearIndex = -1;
+            int currNumberInUp = -1, currIndInUp = -1;
+            bool isShouldToWriteNewUpNumber = false;
+
+            for (int i = 0; i < bricksLine.Count; i++)
             {
-                ObservableCollection<Brick> bricksLine = new ObservableCollection<Brick>();
-
-                for (int i = 0; i < 4; i++, currIndex += 4)
-                    bricksLine.Add(viewModel.bricks[currIndex]);
-
-                int clearIndex = -1;
-                int currNumberInUp = -1, currIndInUp = -1;
-                bool isShouldToWriteNewUpNumber = false;
-
-                for (int i = 0; i < bricksLine.Count; i++)
+                if (bricksLine[i].Number == 0)
                 {
-                    if (bricksLine[i].Number == 0)
+                    if (clearIndex == -1)
+                        clearIndex = i;
+                    continue;
+                }
+                else
+                {
+                    if (currNumberInUp == bricksLine[i].Number)
                     {
-                        if (clearIndex == -1)
-                            clearIndex = i;
+                        bricksLine[currIndInUp].Number *= 2;
+                        bricksLine[i].Number = 0;
+                        clearIndex = currIndInUp + 1;
+                        currNumberInUp = -1;
+                        currIndInUp = -1;
                         continue;
                     }
                     else
+                        isShouldToWriteNewUpNumber = true;
+
+                    if (clearIndex != -1)
                     {
-                        if (currNumberInUp == bricksLine[i].Number)
-                        {
-                            bricksLine[currIndInUp].Number *= 2;
-                            bricksLine[i].Number = 0;
-                            clearIndex = currIndInUp + 1;
-                            currNumberInUp = -1;
-                            currIndInUp = -1;
-                            continue;
-                        }
-                        else
-                            isShouldToWriteNewUpNumber = true;
-
-                        if (clearIndex != -1)
-                        {
-                            if (isShouldToWriteNewUpNumber)
-                            {
-                                currNumberInUp = bricksLine[i].Number;
-                                currIndInUp = clearIndex;
-                                isShouldToWriteNewUpNumber = false;
-                            }
-                            bricksLine[clearIndex].Number = bricksLine[i].Number;
-                            bricksLine[i].Number = 0;
-                            clearIndex++;
-                        }
-
-                        else
+                        if (isShouldToWriteNewUpNumber)
                         {
                             currNumberInUp = bricksLine[i].Number;
-                            currIndInUp = i;
+                            currIndInUp = clearIndex;
                             isShouldToWriteNewUpNumber = false;
                         }
+                        bricksLine[clearIndex].Number = bricksLine[i].Number;
+                        bricksLine[i].Number = 0;
+                        clearIndex++;
                     }
-                }
-            }
-        }
 
-        private void MoveLeft_Click(object sender, RoutedEventArgs e)
-        {
-            int currIndex = 0;
-            for (int row = 0; row < 4; row++)
-            {
-                ObservableCollection<Brick> bricksLine = new ObservableCollection<Brick>();
-
-                for (int i = 0; i < 4; i++)
-                    bricksLine.Add(viewModel.bricks[currIndex++]);
-
-                int clearIndex = -1;
-                int currNumberInLeft = -1, currIndInLeft = -1;
-                bool isShouldToWriteNewLeftNumber = false;
-
-                for (int i = 0; i < bricksLine.Count; i++)
-                {
-                    if (bricksLine[i].Number == 0)
-                    {
-                        if (clearIndex == -1)
-                            clearIndex = i;
-                        continue;
-                    }
                     else
                     {
-                        if (currNumberInLeft == bricksLine[i].Number)
-                        {
-                            bricksLine[currIndInLeft].Number *= 2;
-                            bricksLine[i].Number = 0;
-                            clearIndex = currIndInLeft + 1;
-                            currNumberInLeft = -1;
-                            currIndInLeft = -1;
-                            continue;
-                        }
-                        else
-                            isShouldToWriteNewLeftNumber = true;
-
-                        if (clearIndex != -1)
-                        {
-                            if (isShouldToWriteNewLeftNumber)
-                            {
-                                currNumberInLeft = bricksLine[i].Number;
-                                currIndInLeft = clearIndex;
-                                isShouldToWriteNewLeftNumber = false;
-                            }
-                            bricksLine[clearIndex].Number = bricksLine[i].Number;
-                            bricksLine[i].Number = 0;
-                            clearIndex++;
-                        }
-
-                        else
-                        {
-                            currNumberInLeft = bricksLine[i].Number;
-                            currIndInLeft = i;
-                            isShouldToWriteNewLeftNumber = false;
-                        }
+                        currNumberInUp = bricksLine[i].Number;
+                        currIndInUp = i;
+                        isShouldToWriteNewUpNumber = false;
                     }
                 }
             }
         }
 
+        private void moveDown_Click(object sender, RoutedEventArgs e)
+        {
+            MoveDown();
+        }
+        private void moveUp_Click(object sender, RoutedEventArgs e)
+        {
+            MoveUp();
+        }
+        private void MoveLeft_Click(object sender, RoutedEventArgs e)
+        {
+            MoveLeft();
+        }
         private void MoveRight_Click(object sender, RoutedEventArgs e)
+        {
+            MoveRight();
+        }
+
+        private void MoveRight()
         {
             int currIndex = 0;
             for (int row = 0; row < 4; row++)
@@ -261,54 +195,49 @@ namespace Task01
                 if (bricksLine.Count(x => x.Number == 0) == 4)
                     continue;
 
-                int clearIndex = -1;
-                int currNumberInRight = -1, currIndInRight = -1;
-                bool isShouldToWriteNewRightNumber = false;
+                MoveDownAndRight(bricksLine);
+            }
+        }
+        private void MoveLeft()
+        {
+            int currIndex = 0;
+            for (int row = 0; row < 4; row++)
+            {
+                ObservableCollection<Brick> bricksLine = new ObservableCollection<Brick>();
 
-                for (int i = bricksLine.Count - 1; i >= 0; i--)
-                {
-                    if (bricksLine[i].Number == 0)
-                    {
-                        if (clearIndex == -1)
-                            clearIndex = i;
-                        continue;
-                    }
-                    else
-                    {
-                        if (currNumberInRight == bricksLine[i].Number)
-                        {
-                            bricksLine[currIndInRight].Number *= 2;
-                            bricksLine[i].Number = 0;
-                            clearIndex = currIndInRight - 1;
-                            currNumberInRight = -1;
-                            currIndInRight = -1;
-                            continue;
-                        }
-                        else
-                            isShouldToWriteNewRightNumber = true;
+                for (int i = 0; i < 4; i++)
+                    bricksLine.Add(viewModel.bricks[currIndex++]);
 
-                        if (clearIndex != -1)
-                        {
-                            if (isShouldToWriteNewRightNumber)
-                            {
-                                currNumberInRight = bricksLine[i].Number;
-                                currIndInRight = clearIndex;
-                                isShouldToWriteNewRightNumber = false;
-                            }
-                            bricksLine[clearIndex].Number = bricksLine[i].Number;
-                            bricksLine[i].Number = 0;
-                            clearIndex--;
-                            // Баг пов'язаний з тим, що при опусканні елементів які стоять разом, вони не додаються, якщо ставити clearIndex = i, то вони не опускаються разом
-                        }
+                MoveLeftAndUp(bricksLine);
+            }
+        }
+        private void MoveUp()
+        {
+            int currIndex = 0;
+            for (int col = 0; col < 4; col++, currIndex = col)
+            {
+                ObservableCollection<Brick> bricksLine = new ObservableCollection<Brick>();
 
-                        else
-                        {
-                            currNumberInRight = bricksLine[i].Number;
-                            currIndInRight = i;
-                            isShouldToWriteNewRightNumber = false;
-                        }
-                    }
-                }
+                for (int i = 0; i < 4; i++, currIndex += 4)
+                    bricksLine.Add(viewModel.bricks[currIndex]);
+
+                MoveLeftAndUp(bricksLine);
+            }
+        }
+        private void MoveDown()
+        {
+            int currIndex = 0;
+            for (int col = 0; col < 4; col++, currIndex = col)
+            {
+                ObservableCollection<Brick> bricksLine = new ObservableCollection<Brick>();
+
+                for (int i = 0; i < 4; i++, currIndex += 4)
+                    bricksLine.Add(viewModel.bricks[currIndex]);
+
+                if (bricksLine.Count(x => x.Number == 0) == 4)
+                    continue;
+
+                MoveDownAndRight(bricksLine);
             }
         }
 
@@ -316,7 +245,39 @@ namespace Task01
         {
             viewModel.bricks[field.SelectedIndex].Number = 2;
         }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Left:
+                    MoveLeft();
+                    break;
+                case Key.Up:
+                    MoveUp();
+                    break;
+                case Key.Right:
+                    MoveRight();
+                    break;
+                case Key.Down:
+                    MoveDown();
+                    break;
+               
+                case Key.A:
+                    goto case Key.Left;
+                case Key.S:
+                    goto case Key.Down;
+                case Key.W:
+                    goto case Key.Up;
+                case Key.D:
+                    goto case Key.Right;
+
+                default:
+                    break;
+            }
+        }
     }
+
     class Brick : INotifyPropertyChanged
     {
         int number;

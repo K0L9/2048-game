@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Codes\\WPF(C#)\\Test2048(1)\\Task01\\Task01.csproj": {}
+    "C:\\Users\\Kolya\\myGit\\WPF_2048\\Test2048(1)\\Task01\\Task01.csproj": {}
   },
   "projects": {
-    "E:\\Codes\\WPF(C#)\\Test2048(1)\\Task01\\Task01.csproj": {
+    "C:\\Users\\Kolya\\myGit\\WPF_2048\\Test2048(1)\\Task01\\Task01.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Codes\\WPF(C#)\\Test2048(1)\\Task01\\Task01.csproj",
+        "projectUniqueName": "C:\\Users\\Kolya\\myGit\\WPF_2048\\Test2048(1)\\Task01\\Task01.csproj",
         "projectName": "Task01",
-        "projectPath": "E:\\Codes\\WPF(C#)\\Test2048(1)\\Task01\\Task01.csproj",
+        "projectPath": "C:\\Users\\Kolya\\myGit\\WPF_2048\\Test2048(1)\\Task01\\Task01.csproj",
         "packagesPath": "C:\\Users\\Kolya\\.nuget\\packages\\",
-        "outputPath": "E:\\Codes\\WPF(C#)\\Test2048(1)\\Task01\\obj\\",
+        "outputPath": "C:\\Users\\Kolya\\myGit\\WPF_2048\\Test2048(1)\\Task01\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Kolya\\AppData\\Roaming\\NuGet\\NuGet.Config",
