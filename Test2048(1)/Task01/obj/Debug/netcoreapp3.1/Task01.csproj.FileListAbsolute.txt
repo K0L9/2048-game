@@ -24,11 +24,9 @@ C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\bin\Debug\netcoreapp3.1\Task01.
 C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\bin\Debug\netcoreapp3.1\Task01.dll
 C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\bin\Debug\netcoreapp3.1\Task01.pdb
 C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\Task01.csprojAssemblyReference.cache
-C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\Task01_MarkupCompile.cache
 C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\Task01_MarkupCompile.lref
-C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\MainWindow.baml
 C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\Task01.g.resources
 C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\Task01.AssemblyInfoInputs.cache
 C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\Task01.AssemblyInfo.cs
@@ -36,3 +34,5 @@ C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\Task01.
 C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\Task01.dll
 C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\Task01.pdb
 C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\Task01.genruntimeconfig.cache
+C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\View\MainWindow.g.cs
+C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\View\MainWindow.baml
