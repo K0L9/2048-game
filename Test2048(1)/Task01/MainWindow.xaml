@@ -1,0 +1,26 @@
+﻿<Window x:Class="Task01.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task01"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <DockPanel>
+        <ListView x:Name="field" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" DockPanel.Dock="Left" Width="500" SelectionChanged="field_SelectionChanged">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="4" Rows="4"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+        <Button DockPanel.Dock="Right" x:Name="addOneBrick" Content="Add brick" Click="addOneBrick_Click"/>
+        <Button DockPanel.Dock="Right" x:Name="moveDown" Content="Move down" Click="moveDown_Click"/>
+        <Button DockPanel.Dock="Right" x:Name="moveUp" Content="Move Up" Click="moveUp_Click"/>
+        <Button DockPanel.Dock="Right" x:Name="MoveLeft" Content="Move Left" Click="MoveLeft_Click"/>
+        <Button DockPanel.Dock="Right" x:Name="MoveRight" Content="Move Right" Click="MoveRight_Click"/>
+    </DockPanel>
+
+
+</Window>
