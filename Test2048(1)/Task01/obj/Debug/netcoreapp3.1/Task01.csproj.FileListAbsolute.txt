@@ -34,5 +34,5 @@ C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\Task01.
 C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\Task01.dll
 C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\Task01.pdb
 C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\Task01.genruntimeconfig.cache
-C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\View\MainWindow.g.cs
-C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\View\MainWindow.baml
+C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\Kolya\myGit\WPF_2048\Test2048(1)\Task01\obj\Debug\netcoreapp3.1\MainWindow.baml

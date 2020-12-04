@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Task01
 {
@@ -88,6 +89,8 @@ namespace Task01
                 bricks[rndIndex].Number = 4;
             else
                 bricks[rndIndex].Number = 2;
+
+            bricks[rndIndex].IsNewBrick = true;
 
             return true;
         }
@@ -368,6 +371,110 @@ namespace Task01
             if (EndOfGame())
                 StartGame();
             return false;
+        }
+    }
+
+    class GetColor
+    {
+        public static SolidColorBrush Col0 => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFCDC1B3"));
+        public static SolidColorBrush Col2 => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFEEE4DA"));
+        public static SolidColorBrush Col4 => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFEDE0C8"));
+        public static SolidColorBrush Col8 => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF2B179"));
+        public static SolidColorBrush Col16 => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF59563"));
+        public static SolidColorBrush Col32 => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF67C60"));
+        public static SolidColorBrush Col64 => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF65E3B"));
+        public static SolidColorBrush Col128 => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFEDCF73"));
+        public static SolidColorBrush Col256 => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFEDCC62"));
+        public static SolidColorBrush Col512 => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFEDC850"));
+        public static SolidColorBrush Col1024 => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFEDC53F"));
+        public static SolidColorBrush Col2048 => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFEDC22D"));
+    }
+
+    class Brick : INotifyPropertyChanged
+    {
+        int number;
+        Brush brush;
+        bool isNewBrick = false;
+        public int Number
+        {
+            get => number;
+            set
+            {
+                number = value;
+                UpdateColor();
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(GetNumber));
+                OnPropertyChanged(nameof(BackgroundColor));
+            }
+        }
+        public Brush BackgroundColor
+        {
+            get => brush;
+            set => brush = value;
+        }
+        public bool IsNewBrick
+        {
+            get => isNewBrick;
+            set => isNewBrick = value;
+        }
+
+        private void UpdateColor()
+        {
+            switch (number)
+            {
+                case 0:
+                    brush = GetColor.Col0;
+                    break;
+                case 2:
+                    brush = GetColor.Col2;
+                    break;
+                case 4:
+                    brush = GetColor.Col4;
+                    break;
+                case 8:
+                    brush = GetColor.Col8;
+                    break;
+                case 16:
+                    brush = GetColor.Col16;
+                    break;
+                case 32:
+                    brush = GetColor.Col32;
+                    break;
+                case 64:
+                    brush = GetColor.Col64;
+                    break;
+                case 128:
+                    brush = GetColor.Col128;
+                    break;
+                case 256:
+                    brush = GetColor.Col256;
+                    break;
+                case 512:
+                    brush = GetColor.Col512;
+                    break;
+                case 1024:
+                    brush = GetColor.Col1024;
+                    break;
+                case 2048:
+                    brush = GetColor.Col2048;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        public Brick()
+        {
+            Number = 0;
+        }
+        public string GetNumber => number != 0 ? number.ToString() : String.Empty;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }
