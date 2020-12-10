@@ -122,6 +122,7 @@ namespace Task01
                     if (currNumberInDown == bricksLine[i].Number)
                     {
                         bricksLine[currIndInDown].Number *= 2;
+                        bricksLine[currIndInDown].IsNewBrick = true;
                         Score += bricksLine[currIndInDown].Number;
                         bricksLine[i].Number = 0;
                         clearIndex = currIndInDown - 1;
@@ -178,6 +179,7 @@ namespace Task01
                     if (currNumberInUp == bricksLine[i].Number)
                     {
                         bricksLine[currIndInUp].Number *= 2;
+                        bricksLine[currIndInUp].IsNewBrick = true;
                         Score += bricksLine[currIndInUp].Number;
                         bricksLine[i].Number = 0;
                         clearIndex = currIndInUp + 1;
@@ -212,6 +214,12 @@ namespace Task01
                 }
             }
             return isOneMove;
+        }
+
+        public void SetNotNewBricks()
+        {
+            foreach (var el in bricks)
+                el.IsNewBrick = false;
         }
 
         public bool MoveRight()
@@ -354,7 +362,6 @@ namespace Task01
             else
                 return false;
         }
-
         public void StartGame()
         {
             Score = 0;
@@ -365,7 +372,6 @@ namespace Task01
             AddOneBrick();
             ReadHighScore();
         }
-
         public bool EscapeGame()
         {
             if (EndOfGame())
@@ -405,6 +411,7 @@ namespace Task01
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(GetNumber));
                 OnPropertyChanged(nameof(BackgroundColor));
+                OnPropertyChanged(nameof(isNewBrick));
             }
         }
         public Brush BackgroundColor
@@ -415,7 +422,11 @@ namespace Task01
         public bool IsNewBrick
         {
             get => isNewBrick;
-            set => isNewBrick = value;
+            set
+            {
+                isNewBrick = value;
+                OnPropertyChanged();
+            }
         }
 
         private void UpdateColor()

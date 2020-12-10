@@ -67,6 +67,8 @@ namespace Task01
                     break;
             }
 
+            viewModel.SetNotNewBricks();
+
             if (isNextRound)
                 viewModel.AddOneBrick();
 
@@ -97,3 +99,4 @@ namespace Task01
         }
     }
 }
+
